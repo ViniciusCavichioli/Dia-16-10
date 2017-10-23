@@ -1,18 +1,20 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-
-class Usuario(models.Model):
-    telefone = models.CharField(max_length = 11)
-    
 class Pessoa(models.Model):
-    idUsuario = models.ForeignKey(Usuario, related_name = 'Usuario', null = True, blank = False)
     nome = models.CharField(max_length = 128)
     email = models.CharField(max_length = 100)
+    sexo = models.CharField(max_length=10)
+    idade = models.IntegerField()
+    usuario = models.ForeignKey(User, null=True, blank=False)
 
 class Evento(models.Model):
     nome = models.CharField(max_length = 100)
     dataEHoraDeInicio = models.DateField(max_length = 20)
     endereco = models.CharField(max_length = 150)
+    logotipo = models.CharField(max_length=40)
+    sigla = models.CharField(max_length=14)
+    eventoPrincipal = models.CharField(max_length=256)
 
 class Ticket(models.Model):
     nome = models.CharField(max_length = 128)
@@ -22,6 +24,6 @@ class Ticket(models.Model):
 
 class Inscricao(models.Model):
     idEvento = models.ForeignKey(Eveto, related_name = 'Evento', null = True, blank = False)
-    idPesso = models.ForeignKey(Pessoa, related_name = 'Pessoa', null = True, blank = False)
+    idParticipante = models.ForeignKey(Pessoa, related_name = 'Pessoa', null = True, blank = False)
     idTicket = models.ForeignKey(Ticket, related_name = 'Ticket', null = True, blank = False)
-    validacao = models.CharField(max_length = 50)
+    validacao = models.BooleanField("Situação do pagamento de tickets",default=False)

@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lpc_evento',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
