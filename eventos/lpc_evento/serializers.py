@@ -24,4 +24,4 @@ class InscricaoSerializer(serializers.HyperlinkedModelSerializer):
     idTicket = TicketSerializer(many = True)
     class Meta:
         model = Agenda
-        fields = ('idEvento', 'idParticipante','idTicket','validacao')
+        fields = ('Evento', 'Participante','Ticket','validacao')

@@ -19,11 +19,11 @@ class Evento(models.Model):
 class Ticket(models.Model):
     nome = models.CharField(max_length = 128)
     descricao = models.TextField()
-    valor = models.Money()
-    idEvento = models.ForeignKey(Eveto, related_name = 'Evento', null = True, blank = False)
+    valor = models.FloatField()
+    idEvento = models.ForeignKey(Evento, related_name = 'Evento_Ticket', null = True, blank = False)
 
 class Inscricao(models.Model):
-    idEvento = models.ForeignKey(Eveto, related_name = 'Evento', null = True, blank = False)
-    idParticipante = models.ForeignKey(Pessoa, related_name = 'Pessoa', null = True, blank = False)
-    idTicket = models.ForeignKey(Ticket, related_name = 'Ticket', null = True, blank = False)
+    Evento = models.ForeignKey(Evento, related_name = 'Evento_Inscricao', null = True, blank = False)
+    Participante = models.ForeignKey(Pessoa, related_name = 'Pessoa_Inscricao', null = True, blank = False)
+    Ticket = models.ForeignKey(Ticket, related_name = 'Ticket_Inscricao', null = True, blank = False)
     validacao = models.BooleanField("Situação do pagamento de tickets",default=False)
