@@ -4,6 +4,10 @@ from django.http import HttpResponse
 from lpc_evento.models import *
 from lpc_evento.serializers import *
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
 class PessoaViewSet(viewsets.ModelViewSet):
     queryset = Pessoa.objects.all()
     serializer_class = PessoaSerializer
