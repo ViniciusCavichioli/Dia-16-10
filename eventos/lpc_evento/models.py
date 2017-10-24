@@ -26,4 +26,4 @@ class Inscricao(models.Model):
     Evento = models.ForeignKey(Evento, related_name = 'Evento_Inscricao', null = True, blank = False)
     Participante = models.ForeignKey(Pessoa, related_name = 'Pessoa_Inscricao', null = True, blank = False)
     Ticket = models.ForeignKey(Ticket, related_name = 'Ticket_Inscricao', null = True, blank = False)
-    validacao = models.BooleanField("Situação do pagamento de tickets",default=False)
+    validacao = models.CharField(max_length=40)
