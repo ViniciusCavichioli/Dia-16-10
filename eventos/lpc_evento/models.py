@@ -8,6 +8,9 @@ class Pessoa(models.Model):
     idade = models.IntegerField()
     usuario = models.ForeignKey(User, null=True, blank=False)
 
+    def __str__(self):
+        return '{}'.format(self.nome)
+
 class Evento(models.Model):
     nome = models.CharField(max_length = 100)
     dataEHoraDeInicio = models.DateField(max_length = 20)
@@ -16,11 +19,17 @@ class Evento(models.Model):
     sigla = models.CharField(max_length=14)
     eventoPrincipal = models.CharField(max_length=256)
 
+    def __str__(self):
+        return '{}'.format(self.nome)
+
 class Ticket(models.Model):
     nome = models.CharField(max_length = 128)
     descricao = models.TextField()
     valor = models.FloatField()
     idEvento = models.ForeignKey(Evento, related_name = 'Evento_Ticket', null = True, blank = False)
+
+    def __str__(self):
+        return '{}'.format(self.nome)
 
 class Inscricao(models.Model):
     Evento = models.ForeignKey(Evento, related_name = 'Evento_Inscricao', null = True, blank = False)
